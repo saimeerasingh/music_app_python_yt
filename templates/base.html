@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="static/main.css">
+        <title>
+            {{heading}}
+        </title>
+    </head>
+<body>
+    <nav>
+           <a href="/playlist" >Home</a>
+           <a href="/song" >Add Songs</a>
+           <form action="/results" method="post">
+           <label for="song_search">Search for a song</label>
+           <input type="text" name="song_search" id="song_search" placeholder="Search..">
+           <input type="submit" value="Search Song"/>
+           </form> 
+          
+           
+    </nav>
+    {% block content%} {% endblock %}
+    </body>
+</html>
