@@ -14,8 +14,8 @@ def index():
 def add_song():
     song_name = request.form["name"]
     song_artist = request.form["artist"]
-    song_genre = request.form["genre"]
-    new_song = Song(song_name,song_artist,song_genre,False)
+    song_video = request.form["video"]
+    new_song = Song(name=song_name,artist_name=song_artist,video=song_video,played=False)
     add_new_song(new_song)
     return redirect('/playlist')
 
