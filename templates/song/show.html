@@ -4,7 +4,10 @@
 <div>
     <ul>
         {% for song in results %}
-            <li>{{song}}</li>   
+            <li>{{song.name}} : {{song.artist_name}} 
+                <iframe width="420" height="345" src="https://www.youtube.com/embed/{{song.video}}">
+                </iframe>
+            </li>   
         {% endfor %}
         
         
