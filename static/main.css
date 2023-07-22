@@ -9,10 +9,41 @@
     /* flex-basis: 0;
     flex-grow: 1;  */
     padding: 20px;
-    margin: 30px;
+    margin: 0 auto;
     background-color: rgb(239, 235, 240);
+    flex-grow: 0;
+    align-items: flex-start;
+   
 }
 
-.flex-container:hover{
+/* .flex-container:hover{
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+} */
+
+
+.video-container:hover {
+  
+  animation: shake 0.5s infinite;
+
+    
+}
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+
+/* .video-container:hover{
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+} */
+
+iframe{
+    width: 50%;
 }

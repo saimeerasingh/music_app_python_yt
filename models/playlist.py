@@ -12,12 +12,20 @@ def add_new_song(new_song):
     
 def search_song(new_song):
     ytmusic = YTMusic(auth="oauth.json")
-    results = ytmusic.search(query=new_song,filter="songs",limit=5)
+    results = ytmusic.search(query=new_song,filter="songs",limit=10)
     song_found = set()
     for item in results:
         filtered_song =Song(
             name =item.get("title","Unnamed song"),
-            artist_name =item.get("artist","Unknown Artist"),
+            artist_name =get_artist_name(artists=item.get("artists", [{"name":"noname artist"}]) ),
             video = item.get("videoId","Video Unavailable"))
         song_found.add(filtered_song)
-    return song_found
+    return list(song_found)[:5]
+
+def get_artist_name(artists:list)->str:
+  new_set = set()
+#   artists = artist_dict.get("artists", [{"name":"noname artist"}]) 
+  for a in artists:
+    name = a.get("name")
+    new_set.add(name)
+  return(",".join(new_set))
