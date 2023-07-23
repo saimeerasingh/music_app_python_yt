@@ -12,7 +12,7 @@ def add_new_song(new_song):
     
 def search_song(new_song):
     ytmusic = YTMusic(auth="oauth.json")
-    results = ytmusic.search(query=new_song,filter="songs",limit=10)
+    results = ytmusic.search(query=new_song,filter="songs")
     song_found = set()
     for item in results:
         filtered_song =Song(

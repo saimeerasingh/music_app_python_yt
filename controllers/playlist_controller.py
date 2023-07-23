@@ -3,11 +3,13 @@ from flask import Blueprint
 from models.playlist import playlist, add_new_song,search_song
 from flask import render_template, request, redirect, flash
 from models.song import Song
+import repositories.playlist_repository as playlist_repository
 
 songs_blueprint = Blueprint("playlist",__name__)
 
 @songs_blueprint.route('/playlist')
 def index():
+    playlist = playlist_repository.select_all()
     return render_template('index.html',  heading="My Playlist", playlist=playlist)
 
 @songs_blueprint.route('/song', methods=["POST"])
@@ -16,7 +18,7 @@ def add_song():
     song_artist = request.form["artist"]
     song_video = request.form["video"]
     new_song = Song(name=song_name,artist_name=song_artist,video=song_video,played=False)
-    add_new_song(new_song)
+    playlist_repository.save(new_song)
     return redirect('/playlist')
 
 

@@ -1,26 +1,30 @@
 
     {% extends "base.html" %} {% block content%}
         <h1>{{heading}}!!</h1>
-        
-            <!-- <label for="name">Song Name</label>
-            <input type ="text" name="name" id="name"/>
-            <label for="artist">Artist Name</label>
-            <input type="artist" name="artist" id="artist"/>
-            <label for="genre">Genre</label>
-            <input type="text" name="genre" id="genre"> -->
-            
+          
         </form>
             <ul>{% for song in playlist %}
-            <div class="flex-container"><p>
+            <p><div class="flex-container"> 
                 <li>
                    <b>
                     <span>&#9658;</span>
-                    {{song.song_name}}:{{song.artist_name}}</b> 
+                    {{song.song_name}}:{{song.artist_name}} 
+                    <div class="video-container">
+                        <iframe width="420" height="345" src="{{song.video}}">
+                        </iframe>
+                        </div>
+                    </b> 
                 <!-- <span> &#9989;</span></li> -->
-                <label for="played">Played</label>
-                <input type="checkbox" name="played" id="played">
                 </li>
-        </p></div>
+        </p>
         {% endfor %} 
     </ul>
    {% endblock %}
+</div>
+
+
+
+
+      
+
+        
