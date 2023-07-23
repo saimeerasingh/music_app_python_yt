@@ -2,25 +2,28 @@
 
 {% block content %}
 <div>
-    <ul>
+   
         {% for song in results %}
-            <li><form action="/song" method ="post">  
+          
+                <form action="/song" method ="post">  
+                <div class="title-item">
                 <input type="hidden" name="name" value="{{song.song_name}}">
-                {{song.song_name}} : 
+                <i style="font-size:24px">{{song.song_name}}</i> : 
                 <input type="hidden" name="artist" value="{{song.artist_name}}">
                 {{song.artist_name}} 
+                </div>
                 <input type="hidden" name="video" value="https://www.youtube.com/embed/{{song.video}}">
                 <div class="video-container">
                 <iframe width="420" height="345" src="https://www.youtube.com/embed/{{song.video}}">
                 </iframe>
                 </div>
-                <input type="submit" value="Add Song"/>
+                <button type="submit" value="Add Song"><i style="font-size:24px">Add to playlist</i></button>
                 </form>
-            </li>   
+           
         {% endfor %}
         
         
-    </ul>
+    
 </div>
 
 {% endblock %}

@@ -3,26 +3,26 @@
         <h1>{{heading}}!!</h1>
           
         </form>
-            <ul>{% for song in playlist %}
+            {% for song in playlist %}
             <p><div class="flex-container"> 
-                <li>
-                   <b>
-                    <span>&#9658;</span>
-                    {{song.song_name}}:{{song.artist_name}} 
+                <div class="list-item"><div class="title-item">
+                    {{song.song_name}}:{{song.artist_name}}
+                </div>
                     <div class="video-container">
                         <iframe width="420" height="345" src="{{song.video}}">
                         </iframe>
                         </div>
-                        <form class="delete-form" action="/playlist/{{song.id}}/delete" method="POST">
-                        <button type="submit" class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true">
+                       <b> <form class="delete-form" action="/playlist/{{song.id}}/delete" method="POST">
+                        <button type="submit" class="trash-button"><i style="font-size:24px">Delete<i class="fa fa-trash-o"  aria-hidden="true"></b>
+                            </i></button>
+
                         </i></button>
                         </form>
-                    </b> 
-                <!-- <span> &#9989;</span></li> -->
-                </li>
+                </div>   
+                
         </p>
         {% endfor %} 
-    </ul>
+    
    {% endblock %}
 </div>
 

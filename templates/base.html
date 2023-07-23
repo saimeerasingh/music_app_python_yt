@@ -5,16 +5,16 @@
             {{heading}}
         </title>
     </head>
-<body>
-    <nav>
-           <a href="/playlist" >Home</a>
-           <a href="/song" >Add Songs</a>
-           <form action="/results" method="post">
-           <label for="song_search">Search for a song</label>
-           <input type="text" name="song_search" id="song_search" placeholder="Search..">
-           <input type="submit" value="Search Song"/>
-           </form> 
-          
+<body class="main-container">
+    <nav class="nav-bar">
+        <ul>
+          <h3> <li><a class="home-nav" href="/playlist"><i style="font-size:24px">Home</i></a></li>
+           <li><form class="search-button" action="/results" method="post">
+           <label for="song_search"><i style="font-size:24px">Search for a song</i></label>
+           <input type="text" name="song_search" id="song_search" style="font-size:24px" placeholder="Search for a song..">
+           <button type="submit" value="Search"><i style="font-size:24px">Search</i></button></form>
+           </form> </h3>
+        </ul> 
            
     </nav>
     {% block content%} {% endblock %}
