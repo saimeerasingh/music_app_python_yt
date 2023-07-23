@@ -17,7 +17,7 @@ def add_song():
     song_name = request.form["name"]
     song_artist = request.form["artist"]
     song_video = request.form["video"]
-    new_song = Song(name=song_name,artist_name=song_artist,video=song_video,played=False)
+    new_song = Song(name=song_name,artist_name=song_artist,video=song_video)
     playlist_repository.save(new_song)
     return redirect('/playlist')
 
@@ -35,7 +35,12 @@ def show_song(id):
     song = playlist_repository.select(id)
     return render_template('song/show.html', song=song)
 
-@songs_blueprint.route("/playlist/<name>/delete", methods=['POST'])
-def delete_song(name):
-    playlist_repository.delete(name=name)
+# @songs_blueprint.route("/playlist/<name>/delete", methods=['POST'])
+# def delete_song(name):
+#     playlist_repository.delete(name=name)
+#     return redirect('/playlist')
+
+@songs_blueprint.route("/playlist/<id>/delete", methods=['POST'])
+def delete_song(id):
+    playlist_repository.delete(id)
     return redirect('/playlist')

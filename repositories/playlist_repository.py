@@ -20,7 +20,7 @@ def select_all():
     sql = "SELECT * FROM playlist"
     results = run_sql(sql)
     for row in results:
-        song = Song(row['song_name'], row['artist_name'], row['video'], row['id'] )
+        song = Song(name=row['song_name'], artist_name=row['artist_name'], video=row['video'], id=row['id'] )
         playlist.append(song)
     return playlist
 
@@ -47,3 +47,7 @@ def delete(name:str):
 
 
 
+def delete(id:int):
+    sql = "DELETE FROM playlist WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
