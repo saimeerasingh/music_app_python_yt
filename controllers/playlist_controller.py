@@ -22,8 +22,20 @@ def add_song():
     return redirect('/playlist')
 
 
+
 @songs_blueprint.route('/results', methods=["POST"])
 def search_results():
     found_song = request.form['song_search']
     results = search_song(found_song)
     return render_template('song/show.html' , results=results)
+
+
+@songs_blueprint.route("/playlist/<id>", methods=['GET'])
+def show_song(id):
+    song = playlist_repository.select(id)
+    return render_template('song/show.html', song=song)
+
+@songs_blueprint.route("/playlist/<name>/delete", methods=['POST'])
+def delete_song(name):
+    playlist_repository.delete(name=name)
+    return redirect('/playlist')

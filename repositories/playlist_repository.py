@@ -24,6 +24,16 @@ def select_all():
         playlist.append(song)
     return playlist
 
+def select(id):
+    song = None
+    sql = "SELECT * FROM playlist WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    if results:
+        result = results[0]
+        song = Song(result['song_name'],result['artist_name'], result['video'], result['id'] )
+    return song
 
 
 def delete_all():
@@ -31,14 +41,9 @@ def delete_all():
     run_sql(sql)
 
 
-def delete(id):
-    sql = "DELETE  FROM playlist WHERE id = %s"
-    values = [id]
-    run_sql(sql, values)
+def delete(name:str):
+    sql = f"DELETE FROM playlist WHERE song_name like '{name}'"
+    run_sql(sql, name)
 
 
-def update(song):
-    sql = "UPDATE playlist SET (description, user_id, duration) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [song.song_name, song.artist_name, song.video, song.played, song.id]
-    run_sql(sql, values)
 
